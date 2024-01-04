@@ -40,9 +40,9 @@
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <RadioGroup
-        android:layout_width="175dp"
-        android:layout_height="58dp"
-        android:orientation="horizontal"
+        android:layout_width="169dp"
+        android:layout_height="136dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/tInput"
         app:layout_constraintTop_toTopOf="@+id/tInput">
 

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">แปลงหน่วย</string>
+    <string name="cm">ซม.</string>
+    <string name="inch">นิ้ว</string>
+    <string name="convert">แปลง</string>
+
+</resources>
