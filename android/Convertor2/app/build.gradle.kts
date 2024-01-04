@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.metricconvert"
+    namespace = "com.example.convertor2"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.metricconvert"
+        applicationId = "com.example.convertor2"
         minSdk = 23
         targetSdk = 34
         versionCode = 1
