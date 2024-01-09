@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import java.text.DecimalFormat
 
 class Activity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +35,9 @@ val i =Intent(this,Activity3::class.java)
     result:ActivityResult->if(result.resultCode== RESULT_OK){
    val res= txttbase.text.toString().toDouble()/ result.data!!.getDoubleExtra("target",1.0)
    Log.v("answer",res.toString())
+   val i=Intent(this,Activity5::class.java)
+   i.putExtra("result", DecimalFormat("#,###,###.###").format(res))
+   startActivity(i)
     }
     }
    btnconvert.setOnClickListener { val i=Intent(this, Activity4::class.java)
