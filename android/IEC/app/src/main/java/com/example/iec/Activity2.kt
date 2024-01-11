@@ -14,6 +14,7 @@ import java.text.DecimalFormat
 class Activity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(R.anim.slide_up,R.anim.slide_down)
         setContentView(R.layout.activity_2)
         val txttbase=findViewById<TextView>(R.id.tbase)
         val txtinput=findViewById<EditText>(R.id.eInput)
@@ -43,5 +44,10 @@ val i =Intent(this,Activity3::class.java)
    btnconvert.setOnClickListener { val i=Intent(this, Activity4::class.java)
    Activity4Result.launch(i)
    }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_up,R.anim.slide_down)
     }
 }
