@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/bResource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Resource"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bAsset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Assets"
+        app:layout_constraintEnd_toEndOf="@+id/bResource"
+        app:layout_constraintTop_toBottomOf="@+id/bResource" />
+
+    <Button
+        android:id="@+id/bInternet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Internet"
+        app:layout_constraintEnd_toEndOf="@+id/bAsset"
+        app:layout_constraintTop_toBottomOf="@+id/bAsset" />
+
+    <Button
+        android:id="@+id/bSDCARD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="SDCARD"
+        app:layout_constraintEnd_toEndOf="@+id/bInternet"
+        app:layout_constraintTop_toBottomOf="@+id/bInternet" />
+
+    <Button
+        android:id="@+id/bPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bPause" />
+
+    <Button
+        android:id="@+id/bPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="80dp"
+        android:text="Pause"
+        app:layout_constraintEnd_toStartOf="@+id/bStop"
+        app:layout_constraintStart_toStartOf="@+id/bSDCARD"
+        app:layout_constraintTop_toBottomOf="@+id/bSDCARD" />
+
+    <Button
+        android:id="@+id/bStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bPause" />
+</androidx.constraintlayout.widget.ConstraintLayout>
