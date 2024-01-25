@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val btnPause=findViewById<Button>(R.id.bPause)
         val btnStop=findViewById<Button>(R.id.bStop)
     val btnInternet=findViewById<Button>(R.id.bInternet)
+    val btnSDCARD=findViewById<Button>(R.id.bSDCARD)
         btnResource.setOnClickListener {
             Mp= MediaPlayer()
    Mp= MediaPlayer.create(this,R.raw.greeting)
@@ -42,5 +43,12 @@ class MainActivity : AppCompatActivity() {
         btnPlay.setOnClickListener {  Mp.start() }
     btnPause.setOnClickListener { Mp.pause() }
     btnStop.setOnClickListener { Mp.stop() }
+        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)!=
+            PackageManager.PERMISSION_GRANTED)ActivityCompat.requestPermissions(this,
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1234)
+   btnSDCARD.setOnClickListener {
+       Mp=MediaPlayer()
+       Mp.setDataSource("/sdcard/song.mp3")
+   }
     }
 }
