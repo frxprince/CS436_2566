@@ -1,8 +1,11 @@
 package com.example.videoplayer
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.widget.Button
 import android.widget.MediaController
 import android.widget.VideoView
@@ -18,6 +21,13 @@ class MainActivity : AppCompatActivity() {
         val btnPause=findViewById<Button>(R.id.bPause)
         val btnStop=findViewById<Button>(R.id.bStop)
         val VideoPlayer=findViewById<VideoView>(R.id.video)
+if(checkSelfPermission(Manifest.permission.READ_MEDIA_VIDEO)!=PackageManager.PERMISSION_GRANTED)
+    requestPermissions(arrayOf(Manifest.permission.READ_MEDIA_VIDEO),1234)
+
+btnSDCARD.setOnClickListener {
+VideoPlayer.setVideoURI(
+    Uri.parse(Environment.getExternalStorageDirectory().absolutePath+"/Loituma.3gp"))
+}
 
         btnResource.setOnClickListener {
     VideoPlayer.setVideoURI(Uri.parse("android.resource://"

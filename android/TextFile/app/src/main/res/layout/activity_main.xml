@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/bResource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="20dp"
+        android:text="Read Resource"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bAssets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="46dp"
+        android:text="Read Assets"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bWriteSDCARD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="14dp"
+        android:text="Write to SDCARD"
+        app:layout_constraintStart_toStartOf="@+id/bResource"
+        app:layout_constraintTop_toBottomOf="@+id/bResource" />
+
+    <Button
+        android:id="@+id/bReadSDCARD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Read SDCARD"
+        app:layout_constraintEnd_toEndOf="@+id/bAssets"
+        app:layout_constraintTop_toBottomOf="@+id/bAssets" />
+
+    <EditText
+        android:id="@+id/eFilename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="37dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="mytextfile.txt"
+        app:layout_constraintStart_toStartOf="@+id/bWriteSDCARD"
+        app:layout_constraintTop_toBottomOf="@+id/bWriteSDCARD" />
+
+    <EditText
+        android:id="@+id/eMultiline"
+        android:layout_width="0dp"
+        android:layout_height="368dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="106dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Hello World" />
+</androidx.constraintlayout.widget.ConstraintLayout>

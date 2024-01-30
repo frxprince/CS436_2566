@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.widget.Button
 import androidx.core.app.ActivityCompat
 
@@ -37,18 +38,21 @@ class MainActivity : AppCompatActivity() {
           Manifest.permission.INTERNET),12345)
    btnInternet.setOnClickListener {
    Mp= MediaPlayer()
-   Mp.setDataSource(this, Uri.parse("https://www.drpaween.com/ohm/mp3test.mp3"))
+   Mp.setDataSource(this, Uri.parse("http://112.121.150.133:9000/stream?type=http&nocache=160"))
    Mp.prepare()
    }
         btnPlay.setOnClickListener {  Mp.start() }
     btnPause.setOnClickListener { Mp.pause() }
     btnStop.setOnClickListener { Mp.stop() }
-        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)!=
+
+        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_MEDIA_AUDIO)!=
             PackageManager.PERMISSION_GRANTED)ActivityCompat.requestPermissions(this,
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1234)
+            arrayOf(Manifest.permission.READ_MEDIA_AUDIO),1234)
+
    btnSDCARD.setOnClickListener {
        Mp=MediaPlayer()
-       Mp.setDataSource("/sdcard/song.mp3")
+       Mp.setDataSource(Environment.getExternalStorageDirectory().absolutePath+"/song.mp3")
+       Mp.prepare()
    }
     }
 }
