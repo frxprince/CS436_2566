@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     val progress=findViewById<ProgressBar>(R.id.progressBar)
     val txt=findViewById<TextView>(R.id.textView)
     progress.max=100
-    var battery=object:MyReceiver(){
+     battery=object:MyReceiver(){
         override fun update(batteryLv: Float, USB: Int,temp:Float) {
           progress.progress=batteryLv.toInt()
           var usb_status=when(USB){
@@ -32,7 +32,13 @@ class MainActivity : AppCompatActivity() {
     }
     registerReceiver(battery, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
     }
- abstract class MyReceiver:BroadcastReceiver() {
+    lateinit var battery:MyReceiver
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(battery)
+    }
+
+    abstract class MyReceiver:BroadcastReceiver() {
      override fun onReceive(context: Context?, intent: Intent?) {
      var level=intent?.getIntExtra(BatteryManager.EXTRA_LEVEL,0)?:0
      var scale=intent?.getIntExtra(BatteryManager.EXTRA_SCALE,1)?:0
