@@ -1,6 +1,9 @@
 package com.example.sendsms
 
 import android.Manifest
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,6 +31,27 @@ val smsmanager=getSystemService(SmsManager::class.java)
 smsmanager.sendTextMessage(txtNumber.text.toString(),null,txtMessage.text.toString(),
     null,null)
 }
-
     }
+    
+abstract class SMSSent:BroadcastReceiver(){
+    override fun onReceive(context: Context?, intent: Intent?) {
+     when(resultCode){
+         RESULT_OK->show("SMS was sent")
+         SmsManager.RESULT_ERROR_NO_SERVICE->show("No service")
+         SmsManager.RESULT_ERROR_RADIO_OFF->show("Flight mode")
+         else->show("Generic Error")
+     }   
+    }
+   abstract fun show(msg:String)
+}   
+abstract  class SMSdelivered:BroadcastReceiver(){
+    override fun onReceive(context: Context?, intent: Intent?) {
+      if(resultCode== RESULT_OK){show("Message delivered")}else{show("Message Fail")}  
+    }
+    abstract fun show(msg:String)
+    
+
+}   
+    
+    
 }
