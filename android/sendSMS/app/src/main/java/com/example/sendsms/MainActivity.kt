@@ -1,9 +1,11 @@
 package com.example.sendsms
 
 import android.Manifest
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,10 +28,26 @@ if (checkSelfPermission(Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION
 if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE)!=PackageManager.PERMISSION_GRANTED)
   requestPermissions(arrayOf(Manifest.permission.READ_PHONE_STATE),1234)
 
+ val delivered_receiver:SMSdelivered
+ val sent_receiver:SMSSent
+ var deliveredPI=PendingIntent.getBroadcast(this,0,Intent("SMS_DELIVERED"),PendingIntent.FLAG_IMMUTABLE)
+ var sentPI=PendingIntent.getBroadcast(this,0,Intent("SMS_SENT"),PendingIntent.FLAG_IMMUTABLE)
+ delivered_receiver=object : SMSdelivered(){
+     override fun show(msg: String) {
+        txtStatus.text=txtStatus.text.toString()+"\n"+msg
+     }
+ }
+ sent_receiver=object:SMSSent(){
+     override fun show(msg: String) {
+         txtStatus.text=txtStatus.text.toString()+"\n"+msg
+     }
+ }
+registerReceiver(delivered_receiver, IntentFilter("SMS_DELIVERED"))
+registerReceiver(sent_receiver,IntentFilter("SMS_SENT"))
 btnSend.setOnClickListener {
 val smsmanager=getSystemService(SmsManager::class.java)
 smsmanager.sendTextMessage(txtNumber.text.toString(),null,txtMessage.text.toString(),
-    null,null)
+    sentPI,deliveredPI)
 }
     }
     
