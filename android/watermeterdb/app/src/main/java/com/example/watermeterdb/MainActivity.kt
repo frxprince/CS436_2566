@@ -1,5 +1,6 @@
 package com.example.watermeterdb
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -21,6 +22,9 @@ DB.execSQL("insert into waterdata(meter_id,meter_value) " +
     txtMeterID.setText("")
     txtMeterValue.setText("")
 }
-
+btnReport.setOnClickListener {
+ val i= Intent(this,Report::class.java)
+ startActivity(i)
+}
     }
 }
