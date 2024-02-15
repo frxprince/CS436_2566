@@ -13,6 +13,14 @@ class MainActivity : AppCompatActivity() {
     val txtMeterValue=findViewById<EditText>(R.id.eMeterValue)
     val btnSave=findViewById<Button>(R.id.bSave)
     val btnReport=findViewById<Button>(R.id.bReport)
+    var conn=MyDatabase(this,"water.sqlite",null,1)
+    var DB=conn.writableDatabase
+btnSave.setOnClickListener {
+DB.execSQL("insert into waterdata(meter_id,meter_value) " +
+        " values(${txtMeterID.text.toString()},${txtMeterValue.text.toString()})")
+    txtMeterID.setText("")
+    txtMeterValue.setText("")
+}
 
     }
 }
