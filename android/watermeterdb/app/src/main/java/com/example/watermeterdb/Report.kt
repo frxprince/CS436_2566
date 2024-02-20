@@ -5,11 +5,14 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
+import java.io.File
+import java.io.FileOutputStream
 
 class Report : ListActivity() {
  lateinit var DB:SQLiteDatabase
@@ -35,6 +38,20 @@ class Report : ListActivity() {
         btnDelete.setOnClickListener {
             DB.execSQL("delete from waterdata where id=$ID");FetchData()
         }
+     btnExport.setOnClickListener {
+         var file= File(Environment.getExternalStorageDirectory().absolutePath+"/"+
+         Environment.DIRECTORY_DOCUMENTS+"/databaseExport.csv")
+         file.createNewFile()
+         var outputfile=FileOutputStream(file)
+         var cursor=DB.rawQuery("select id,meter_id,meter_value,timestamp from waterdata",null)
+         outputfile.write("ID,meter_id,meter_value,timestamp\n".toByteArray(Charsets.UTF_8))
+         while (cursor.moveToNext()){
+     outputfile.write("${cursor.getString(0)},${cursor.getString(1)
+     },${cursor.getString(2)},${cursor.getString(3)}\n".toByteArray())
+     outputfile.flush()
+         }
+         outputfile.close()
+     }
     }
     override fun onListItemClick(l: ListView?, v: View?, position: Int, id: Long) {
         super.onListItemClick(l, v, position, id)
