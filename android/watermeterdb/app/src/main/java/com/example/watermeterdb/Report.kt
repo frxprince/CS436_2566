@@ -27,6 +27,14 @@ class Report : ListActivity() {
         var conn=MyDatabase(this,"water.sqlite",null,1)
         DB=conn.writableDatabase
         FetchData()
+        btnUpdate.setOnClickListener {
+     DB.execSQL("update waterdata set meter_id=${txtMeterID.text.toString()}" +
+             ", meter_value=${txtMeterValue.text.toString()} where id=$ID")
+     FetchData()
+        }
+        btnDelete.setOnClickListener {
+            DB.execSQL("delete from waterdata where id=$ID");FetchData()
+        }
     }
     override fun onListItemClick(l: ListView?, v: View?, position: Int, id: Long) {
         super.onListItemClick(l, v, position, id)
