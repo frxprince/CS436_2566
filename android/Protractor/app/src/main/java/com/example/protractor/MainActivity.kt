@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity(),SensorEventListener {
   manager=getSystemService(SENSOR_SERVICE) as SensorManager
   sensor=manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) as Sensor
         seekbar.max=180
-
+seekbar.background=getDrawable(R.mipmap.fg)
+seekbar.progressDrawable=getDrawable(R.mipmap.bg)
     }
     override fun onResume() { super.onResume(); manager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL)
     }
