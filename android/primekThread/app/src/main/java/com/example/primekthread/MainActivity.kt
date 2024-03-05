@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
              txtOutput.text=ans.toString()
           }
       }
+       worker.start()
    }
     }
    abstract class PrimeKThread(val k:Long):Thread(){
