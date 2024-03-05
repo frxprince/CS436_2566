@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var txtInput:EditText
     lateinit var txtOutput:TextView
     lateinit var progressbar:ProgressBar
-  
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
