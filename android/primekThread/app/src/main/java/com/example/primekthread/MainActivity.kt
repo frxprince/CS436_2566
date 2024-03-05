@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
        override fun run() {
            super.run()
            val ans=primeK(k)
+           ShowResult(ans)
        }
        abstract fun ShowResult(ans:Long)
        fun isPrime(x:Long):Boolean{
